@@ -22,5 +22,5 @@ from .views import SignUpView
 urlpatterns = [
     path('home/', views.index, name="home"),
     path('signup/', SignUpView.as_view(), name="signup"),
-    
+    path('', views.index, name="all_other"),
 ]
