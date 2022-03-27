@@ -1,9 +1,0 @@
-<h1>Login</h1>
-<form method="post">
-  {% csrf_token %} 
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-</form>
-</br>
-<p>Not signed in?</p>
-<a href="{% url 'signup' %}" class="btn btn-secondary" role="button">Sign Up</a>
