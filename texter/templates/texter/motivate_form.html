@@ -1,44 +1,52 @@
 {% extends 'texter/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
-<br>
-<br>
-<br>
 
-{% if number == True %}
+  {% if number == True %}
 
-{% if active == False %}
+  {% if active == False %}
 
-<td class="text-center">
-    <form method="POST" class="form-inline my-2 my-lg-0" action="/texter/activate/">
-      {% csrf_token %}
-      <input type="hidden" name="status" value="True">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="activate">Activate Motivational Messages</button>
-</form>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-{% else %}
+  <div class="container-fluid">
+    <div class="row">
+      </div class="col-xl-10">
 
-<td class="text-center">
-    <form method="POST" class="form-inline my-2 my-lg-0" action="/texter/activate/">
-      {% csrf_token %}
-      <input type="hidden" name="status" value="False">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="activate">Deactivate Motivational Messages</button>
-</form>
+        <td class="text-center">
+            <form method="POST" class="form-inline" action="/texter/activate/">
+              {% csrf_token %}
+              <input type="hidden" name="status" value="True">
+              <button class="btn btn-outline-primary my-2 my-sm-0" type="activate">Activate Motivational Messages</button>
+        </form>
 
-{% endif %}
-{% endif %}
+        {% else %}
 
-{% if number == False %}
-<td class="text-center">
-  <form method="POST" class="form-inline my-2 my-lg-0" action="/texter/register/">
-    {% csrf_token %}
-    <input type="text" name="number" value="number here">
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="activate">Register your phone number</button>
-</form>
+        <td class="justify-content-center">
+            <form method="POST" class="form-inline my-2 my-lg-0" action="/texter/activate/">
+              {% csrf_token %}
+              <input type="hidden" name="status" value="False">
+              <button class="btn btn-outline-primary my-2 my-sm-0" type="activate">Deactivate Motivational Messages</button>
+        </form>
 
-{% endif %}
+        {% endif %}
+        {% endif %}
 
-<iframe src='https://webchat.botframework.com/embed/AsigEduBot?s=tYPrqib0xfQ.UJ37HGva1hyeD68h8Md_YKWqKmDETj6_Xix5Beb99G0'  style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>
+        {% if number == False %}
+        <td class="justify-content-center">
+          <form method="POST" class="form-inline my-2 my-lg-0" action="/texter/register/">
+            {% csrf_token %}
+            <input type="text" name="number" placeholder="number here">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="activate">Register your phone number</button>
+        </form>
 
+        {% endif %}
+
+        <iframe src='https://webchat.botframework.com/embed/AsigEduBot?s=tYPrqib0xfQ.UJ37HGva1hyeD68h8Md_YKWqKmDETj6_Xix5Beb99G0'  style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>
+      </div>
+    </div>
+  </div>
 {% endblock %}
