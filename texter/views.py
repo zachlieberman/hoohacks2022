@@ -69,7 +69,7 @@ def register(request):
     })
     data = doc_ref.get().to_dict()
     data["number"] = True
-    data["numbeR_val"] = number
+    data["number_val"] = number
     return render(request, "texter/motivate_form.html", data)
 
 def chat(request):
