@@ -16,17 +16,19 @@ def configure(request):
         print(request.user)
     x = "hello"
     number = ""
+    user = str(request.user)
     try:
-        number = models.Number.objects.get(user=str(request.user)).number
+        number = models.Number.objects.get(user=user).number
 
     except:
         data = {"number": False}
         return render(request, "texter/motivate_form.html", data)
     db = firestore.client()
-    doc_ref = db.collection(u'numbers').document(number)
+    doc_ref = db.collection(u'numbers').document(user)
     data = doc_ref.get().to_dict()
     print(data)
     data["number"] = True
+    data["number_val"] = number
 
     return render(request, "texter/motivate_form.html", data)
 # Create your views here.
@@ -37,16 +39,18 @@ def activate(request):
     db = firestore.client()
     print(newSetting)
     number = models.Number.objects.get(user=str(request.user)).number
+    user = str(request.user)
 
-    doc_ref = db.collection(u'numbers').document(number)
+    doc_ref = db.collection(u'numbers').document(user)
     doc_ref.set({
         u'phone-number': number,
         u'active': newSetting
     })
-    doc_ref = db.collection(u'numbers').document(number)
+    doc_ref = db.collection(u'numbers').document(user)
     data = doc_ref.get().to_dict()
 
     data["number"] = True
+    data["number_val"] = number
 
 
     return render(request, "texter/motivate_form.html", data)
@@ -58,11 +62,15 @@ def register(request):
     number = str(request.POST["number"])
     b = models.Number(user=user, number=number)
     b.save()
-    doc_ref = db.collection(u'numbers').document(number)
+    doc_ref = db.collection(u'numbers').document(user)
     doc_ref.set({
         u'phone-number': number,
         u'active': False
     })
     data = doc_ref.get().to_dict()
     data["number"] = True
+    data["numbeR_val"] = number
     return render(request, "texter/motivate_form.html", data)
+
+def chat(request):
+    return render(request, "texter/chatbot.html")
