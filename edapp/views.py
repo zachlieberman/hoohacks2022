@@ -9,6 +9,7 @@ from django.views import generic
 
 from .models import SignUpForm
 
+# temp
 
 # class SignUpView(generic.CreateView):
 #     form_class = UserCreationForm
