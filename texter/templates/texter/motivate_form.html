@@ -20,7 +20,7 @@
             <form method="POST" class="form-inline" action="/texter/activate/">
               {% csrf_token %}
               <input type="hidden" name="status" value="True">
-              <button class="btn btn-outline-primary my-2 my-sm-0" type="activate">Activate Motivational Messages</button>
+              <button class="btn btn-primary my-2 my-sm-0" type="activate">Activate Motivational Messages</button>
         </form>
 
         {% else %}
@@ -29,7 +29,7 @@
             <form method="POST" class="form-inline my-2 my-lg-0" action="/texter/activate/">
               {% csrf_token %}
               <input type="hidden" name="status" value="False">
-              <button class="btn btn-outline-primary my-2 my-sm-0" type="activate">Deactivate Motivational Messages</button>
+              <button class="btn btn-primary my-2 my-sm-0" type="activate">Deactivate Motivational Messages</button>
         </form>
 
         {% endif %}
@@ -40,7 +40,7 @@
           <form method="POST" class="form-inline my-2 my-lg-0" action="/texter/register/">
             {% csrf_token %}
             <input type="text" name="number" placeholder="number here">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="activate">Register your phone number</button>
+            <button class="btn btn-primary my-2 my-sm-0" type="activate">Register your phone number</button>
         </form>
 
         {% endif %}
