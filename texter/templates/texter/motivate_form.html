@@ -5,9 +5,7 @@
 {% block content %}
 
 
-  {% if number == True %}
 
-  {% if active == False %}
 
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -15,8 +13,17 @@
   <div class="container-fluid">
     <div class="row">
       </div class="col-xl-10">
-
+      <p>Your phone number must be in the form "+12345678900"</p>
+      <td class="justify-content-center">
+        <form method="POST" class="form my-2 my-lg-0" action="/texter/register/">
+          {% csrf_token %}
+          <input type="text" name="number" value = "{{number_val}}">
+          <button class="btn btn-primary my-2 my-sm-0" type="activate">Register/Reset your phone number</button>
+      </form>
+      <br>
+      {% if active == False %}
         <td class="text-center">
+          <p>Morning motivational texts are currently deactivated</p>
             <form method="POST" class="form-inline" action="/texter/activate/">
               {% csrf_token %}
               <input type="hidden" name="status" value="True">
@@ -24,8 +31,8 @@
         </form>
 
         {% else %}
-
         <td class="justify-content-center">
+          <p>Morning motivational texts are currently activated</p>
             <form method="POST" class="form-inline my-2 my-lg-0" action="/texter/activate/">
               {% csrf_token %}
               <input type="hidden" name="status" value="False">
@@ -33,19 +40,9 @@
         </form>
 
         {% endif %}
-        {% endif %}
 
-        {% if number == False %}
-        <td class="justify-content-center">
-          <form method="POST" class="form-inline my-2 my-lg-0" action="/texter/register/">
-            {% csrf_token %}
-            <input type="text" name="number" placeholder="number here">
-            <button class="btn btn-primary my-2 my-sm-0" type="activate">Register your phone number</button>
-        </form>
 
-        {% endif %}
 
-        <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/871168dc-59d5-431b-b822-5af2015e1668"></iframe>
       </div>
     </div>
   </div>
