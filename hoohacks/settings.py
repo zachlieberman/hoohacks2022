@@ -25,12 +25,17 @@ SECRET_KEY = 'lkk+&n$(vtf3t2(8r411!@fapwq6%+fy#d5i2^(n5#x@av2c20'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hoohacks2022.herokuapp.com']
+ALLOWED_HOSTS = ['hoohacks2022.herokuapp.com', '*']
+
+LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/accounts/login'
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'edapp.apps.EdappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,18 +59,19 @@ ROOT_URLCONF = 'hoohacks.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR + '/edapp/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages', 
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'hoohacks.wsgi.application'
 
