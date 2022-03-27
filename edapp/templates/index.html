@@ -1,5 +1,9 @@
 {% extends "base_template.html" %}
 
+{% load i18n %}
+
+{% block head_title %}{% trans "EduLab Home" %}{% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
   <h1>EduLab Home</h1>
