@@ -1,5 +1,7 @@
 # EduLab
 
+**Link**: https://hoohacks2022.herokuapp.com/home/
+
 **Live Demo**: https://youtu.be/VumZtAyhs0g
 
 ## **Welcome to Edu-Lab**
